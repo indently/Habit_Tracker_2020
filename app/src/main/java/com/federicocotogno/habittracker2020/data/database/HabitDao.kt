@@ -1,7 +1,8 @@
-package com.federicocotogno.habittracker2020.data
+package com.federicocotogno.habittracker2020.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.federicocotogno.habittracker2020.data.models.Habit
 
 @Dao
 interface HabitDao {
@@ -16,7 +17,7 @@ interface HabitDao {
     suspend fun deleteHabit(habit: Habit)
 
     @Query("SELECT * FROM habit_table ORDER BY habit_startTime DESC")
-    suspend fun getAllHabits(): LiveData<List<Habit>>
+    fun getAllHabits(): LiveData<List<Habit>>
 
     @Query("DELETE FROM habit_table")
     suspend fun deleteAll()

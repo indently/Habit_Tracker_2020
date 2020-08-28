@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/introScreen"
         android:name="com.federicocotogno.habittracker2020.ui.fragments.introscreen.IntroScreen"
-        android:label="fragment_intro_screen"
+        android:label="Getting started"
         tools:layout="@layout/fragment_intro_screen" >
         <action
             android:id="@+id/action_introScreen_to_habitList"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/habitList"
         android:name="com.federicocotogno.habittracker2020.ui.fragments.habitlist.HabitList"
-        android:label="fragment_habit_list"
+        android:label="Habits"
         tools:layout="@layout/fragment_habit_list" >
         <action
             android:id="@+id/action_habitList_to_updateHabitItem"
@@ -29,16 +29,19 @@
     <fragment
         android:id="@+id/updateHabitItem"
         android:name="com.federicocotogno.habittracker2020.ui.fragments.updatehabit.UpdateHabitItem"
-        android:label="fragment_update_habit_item"
+        android:label="Update habit"
         tools:layout="@layout/fragment_update_habit_item" >
         <action
             android:id="@+id/action_updateHabitItem_to_habitList"
             app:destination="@id/habitList" />
+        <argument
+            android:name="selectedHabit"
+            app:argType="com.federicocotogno.habittracker2020.data.models.Habit" />
     </fragment>
     <fragment
         android:id="@+id/createHabitItem"
         android:name="com.federicocotogno.habittracker2020.ui.fragments.createhabit.CreateHabitItem"
-        android:label="fragment_create_habit_item"
+        android:label="Create a new habit"
         tools:layout="@layout/fragment_create_habit_item" >
         <action
             android:id="@+id/action_createHabitItem_to_habitList"

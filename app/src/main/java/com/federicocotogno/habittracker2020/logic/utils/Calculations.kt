@@ -1,7 +1,6 @@
-package com.federicocotogno.habittracker2020.logic
+package com.federicocotogno.habittracker2020.logic.utils
 
 import java.text.SimpleDateFormat
-import java.util.*
 
 object Calculations {
 
