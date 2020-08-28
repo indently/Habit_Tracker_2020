@@ -1,4 +1,4 @@
- package com.federicocotogno.habittracker2020.ui.fragments
+ package com.federicocotogno.habittracker2020.ui.fragments.createhabit
 
 import androidx.fragment.app.Fragment
 import com.federicocotogno.habittracker2020.R

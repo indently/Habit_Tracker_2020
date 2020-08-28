@@ -1,4 +1,4 @@
-package com.federicocotogno.habittracker2020.ui.fragments
+package com.federicocotogno.habittracker2020.ui.fragments.habitlist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

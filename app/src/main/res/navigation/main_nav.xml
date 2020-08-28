@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/introScreen"
-        android:name="com.federicocotogno.habittracker2020.ui.fragments.IntroScreen"
+        android:name="com.federicocotogno.habittracker2020.ui.fragments.introscreen.IntroScreen"
         android:label="fragment_intro_screen"
         tools:layout="@layout/fragment_intro_screen" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/habitList"
-        android:name="com.federicocotogno.habittracker2020.ui.fragments.HabitList"
+        android:name="com.federicocotogno.habittracker2020.ui.fragments.habitlist.HabitList"
         android:label="fragment_habit_list"
         tools:layout="@layout/fragment_habit_list" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateHabitItem"
-        android:name="com.federicocotogno.habittracker2020.ui.fragments.UpdateHabitItem"
+        android:name="com.federicocotogno.habittracker2020.ui.fragments.updatehabit.UpdateHabitItem"
         android:label="fragment_update_habit_item"
         tools:layout="@layout/fragment_update_habit_item" >
         <action
@@ -37,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/createHabitItem"
-        android:name="com.federicocotogno.habittracker2020.ui.fragments.CreateHabitItem"
+        android:name="com.federicocotogno.habittracker2020.ui.fragments.createhabit.CreateHabitItem"
         android:label="fragment_create_habit_item"
         tools:layout="@layout/fragment_create_habit_item" >
         <action
