@@ -32,9 +32,9 @@ object Calculations {
         )
     }
 
-    fun timeStampToDateString(timestamp: Long): String {
+    fun timeStampToDateString(timeStamp: Long): String {
 
-        val stamp = Timestamp(timestamp)
+        val stamp = Timestamp(timeStamp)
         val sdf = SimpleDateFormat("dd/MM/yyyy")
         val date = sdf.format(Date(stamp.time))
 

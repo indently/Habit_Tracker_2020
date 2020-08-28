@@ -10,20 +10,26 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.TimePicker
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.federicocotogno.habittracker2020.R
 import com.federicocotogno.habittracker2020.data.models.Habit
-import com.federicocotogno.habittracker2020.logic.utils.Calculations
+import com.federicocotogno.habittracker2020.ui.viewmodels.HabitViewModel
 import kotlinx.android.synthetic.main.fragment_create_habit_item.*
 import java.util.*
 
 class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
     TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
 
-    private var imageSelected = 0
-    private var timeStamp = 0L
+    private var title = ""
+    private var description = ""
+    private var drawableSelected = 0
+    private var timeStamp = ""
+
+    private lateinit var habitViewModel: HabitViewModel
 
     private var day = 0
     private var month = 0
@@ -32,10 +38,10 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
     private var minute = 0
 
 
-    private lateinit var habitViewModel: ViewModel
-
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        habitViewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
 
         //Add habit to database
         btn_confirm.setOnClickListener {
@@ -45,14 +51,14 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
         pickDateAndTime()
 
         //Selected and image to put into our list
-        imageSelected()
+        drawableSelected()
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun pickDateAndTime() {
         btn_pickDate.setOnClickListener {
             getDateCalendar()
-            DatePickerDialog(requireContext(),this, year,month,day).show()
+            DatePickerDialog(requireContext(), this, year, month, day).show()
 
         }
 
@@ -64,40 +70,84 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
     }
 
     private fun addHabitToDB() {
-        var title = et_habitTitle.text.toString()
-        var description = et_habitDescription.text.toString()
+        title = et_habitTitle.text.toString()
+        description = et_habitDescription.text.toString()
 
+        //todo: Create the timestamp that will be included in the database as a string,
+        // and then use the calculate function to extract it
+        timeStamp = "$day/$month/$year $hour:$minute:00"
 
-        val habit = Habit(0, title, description, timeStamp, imageSelected)
+        if (formCompleted(title, description, timeStamp, drawableSelected)) {
+            val habit = Habit(0, title, description, timeStamp, drawableSelected)
+
+            habitViewModel.addHabit(habit)
+            Toast.makeText(context, "Habit created successfully!", Toast.LENGTH_SHORT).show()
+
+            findNavController().navigate(R.id.action_createHabitItem_to_habitList)
+        } else {
+            //do nothing
+        }
 
 
     }
 
-    private fun imageSelected() {
+    private fun formCompleted(
+        _title: String,
+        _description: String,
+        _timeStamp: String,
+        _drawableSelected: Int
+    ): Boolean {
+
+        if (_title.isEmpty()) {
+            title = "Unnamed habit"
+            return false
+        }
+
+        if (_description.isEmpty()) {
+            title = "No description"
+            return false
+        }
+
+        if (_timeStamp.isEmpty()) {
+            return false
+        }
+
+        if (_drawableSelected == 0) {
+            return false
+        }
+
+        return true
+    }
+
+    private fun drawableSelected() {
         iv_fastFoodSelected.setOnClickListener {
             iv_fastFoodSelected.isSelected = !iv_fastFoodSelected.isSelected
+            drawableSelected = R.drawable.ic_fastfood
 
-            imageSelected = R.id.iv_fastFoodSelected
+            //de-select the other options when we pick an image
+            iv_smokingSelected.isSelected = false
+            iv_teaSelected.isSelected = false
+
         }
 
         iv_smokingSelected.setOnClickListener {
             iv_smokingSelected.isSelected = !iv_smokingSelected.isSelected
+            drawableSelected = R.drawable.ic_smoking2
 
-            imageSelected = R.id.iv_smokingSelected
+            //de-select the other options when we pick an image
+            iv_fastFoodSelected.isSelected = false
+            iv_teaSelected.isSelected = false
         }
 
         iv_teaSelected.setOnClickListener {
             iv_teaSelected.isSelected = !iv_teaSelected.isSelected
+            drawableSelected = R.drawable.ic_tea
 
-            imageSelected = R.id.iv_teaSelected
+            //de-select the other options when we pick an image
+            iv_fastFoodSelected.isSelected = false
+            iv_smokingSelected.isSelected = false
         }
 
-    }
-
-    //Hides the soft keyboard
-    private fun View.hideKeyboard() {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(windowToken, 0)
     }
 
     override fun onTimeSet(TimePicker: TimePicker?, p1: Int, p2: Int) {
