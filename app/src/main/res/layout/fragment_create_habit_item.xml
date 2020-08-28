@@ -13,39 +13,37 @@
         android:orientation="vertical">
 
         <EditText
-            android:inputType="text"
             android:id="@+id/et_habitTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Habit title"
             android:layout_margin="10dp"
-            android:textSize="20sp"
+            android:backgroundTint="#26A69A"
+            android:hint="Habit title"
+            android:inputType="text"
             android:textColor="@android:color/black"
-            android:backgroundTint="#26A69A" />
+            android:textSize="20sp" />
 
         <EditText
-            android:inputType="textShortMessage"
             android:id="@+id/et_habitDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Give it a short description"
             android:layout_margin="10dp"
-            android:textSize="20sp"
+            android:backgroundTint="#26A69A"
+            android:hint="Give it a short description"
+            android:inputType="textShortMessage"
             android:textColor="@android:color/black"
-            android:backgroundTint="#26A69A" />
-
-
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/btn_pickDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/round_button"
             android:backgroundTint="#EF5350"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="Pick a date"
             android:textColor="@android:color/white" />
 
@@ -53,19 +51,20 @@
             android:id="@+id/tv_dateSelected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="Date: (not selected)"
-            android:textSize="20sp"
-            android:layout_margin="10dp"/>
+            android:textSize="20sp" />
+
         <Button
             android:id="@+id/btn_pickTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/round_button"
             android:backgroundTint="#42A5F5"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="Pick a time"
             android:textColor="@android:color/white" />
 
@@ -73,9 +72,9 @@
             android:id="@+id/tv_timeSelected"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:text="Time: (not selected)"
-            android:textSize="20sp"
-            android:layout_margin="10dp"/>
+            android:textSize="20sp" />
 
         <LinearLayout
             android:id="@+id/layout_tea_smoking_fastfood"
@@ -114,17 +113,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
             android:background="@drawable/round_button"
             android:backgroundTint="#26A69A"
             android:clickable="true"
             android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="Confirm"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
-
-
 
 
 </RelativeLayout>

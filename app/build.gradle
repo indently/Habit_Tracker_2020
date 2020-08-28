@@ -75,4 +75,7 @@ dependencies {
     implementation "androidx.room:room-ktx:2.2.5"
     androidTestImplementation "androidx.room:room-testing:2.2.5"
 
+    //Date picker
+    implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
 }
