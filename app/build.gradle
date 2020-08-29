@@ -44,7 +44,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.viewpager2:viewpager2:1.0.0'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -77,5 +76,11 @@ dependencies {
 
     //Date picker
     implementation 'com.wdullaer:materialdatetimepicker:4.2.3'
+
+    //ViewPager2
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    //Circle Indicator (ViewPager2)
+    implementation 'me.relex:circleindicator:2.1.4'
 
 }

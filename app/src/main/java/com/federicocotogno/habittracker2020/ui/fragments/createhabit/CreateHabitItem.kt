@@ -2,12 +2,10 @@ package com.federicocotogno.habittracker2020.ui.fragments.createhabit
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.DatePicker
 import android.widget.TimePicker
 import android.widget.Toast
@@ -73,7 +71,6 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
 
     }
 
-
     private fun addHabitToDB() {
 
         //Get text from editTexts
@@ -84,7 +81,7 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
         timeStamp = "$cleanDate $cleanTime"
 
         //Check that the form is complete before submitting data to the database
-        if (formCompleted(title, description, timeStamp, drawableSelected)) {
+        if (!(title.isEmpty() || description.isEmpty() || timeStamp.isEmpty() || drawableSelected == 0)) {
             val habit = Habit(0, title, description, timeStamp, drawableSelected)
 
             //add the habit if all the fields are filled
@@ -96,16 +93,6 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
         } else {
             Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    //check that the form is complete before allowing the user to submit his request
-    private fun formCompleted(
-        _title: String,
-        _description: String,
-        _timeStamp: String,
-        _drawableSelected: Int
-    ): Boolean {
-        return !(_title.isEmpty() || _description.isEmpty() || _timeStamp.isEmpty() || _drawableSelected == 0)
     }
 
     // Create a selector for our icons which will appear in the recycler view

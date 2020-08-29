@@ -4,7 +4,6 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.DatePicker
@@ -18,7 +17,6 @@ import com.federicocotogno.habittracker2020.R
 import com.federicocotogno.habittracker2020.data.models.Habit
 import com.federicocotogno.habittracker2020.logic.utils.Calculations
 import com.federicocotogno.habittracker2020.ui.viewmodels.HabitViewModel
-import kotlinx.android.synthetic.main.fragment_create_habit_item.*
 import kotlinx.android.synthetic.main.fragment_update_habit_item.*
 import java.util.*
 
@@ -42,7 +40,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
     private var cleanDate = ""
     private var cleanTime = ""
 
-
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         habitViewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
@@ -63,6 +60,8 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
             updateHabit()
         }
 
+        //Show the options menu in this fragment
+        setHasOptionsMenu(true)
     }
 
     private fun updateHabit() {
@@ -75,7 +74,7 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
         timeStamp = "$cleanDate $cleanTime"
 
         //Check that the form is complete before submitting data to the database
-        if (formCompleted(title, description, timeStamp, drawableSelected)) {
+        if (!(title.isEmpty() || description.isEmpty() || timeStamp.isEmpty() || drawableSelected == 0)) {
             val habit =
                 Habit(args.selectedHabit.id, title, description, timeStamp, drawableSelected)
 
@@ -90,15 +89,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
         }
     }
 
-    //Check that the form is complete before allowing the user to submit his request
-    private fun formCompleted(
-        _title: String,
-        _description: String,
-        _timeStamp: String,
-        _drawableSelected: Int
-    ): Boolean {
-        return !(_title.isEmpty() || _description.isEmpty() || _timeStamp.isEmpty() || _drawableSelected == 0)
-    }
 
     // Create a selector for our icons which will appear in the recycler view
     private fun drawableSelected() {
@@ -129,7 +119,9 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
             iv_smokingSelected_update.isSelected = false
         }
     }
+    //------------------------------------------
 
+    //Handle date and time picking
     @RequiresApi(Build.VERSION_CODES.N)
     //set on click listeners for our data and time pickers
     private fun pickDateAndTime() {
@@ -145,15 +137,12 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
 
     }
 
-
-    //get the current time
     private fun getTimeCalendar() {
         val cal = Calendar.getInstance()
         hour = cal.get(Calendar.HOUR_OF_DAY)
         minute = cal.get(Calendar.MINUTE)
     }
 
-    //get the current date
     private fun getDateCalendar() {
         val cal = Calendar.getInstance()
         day = cal.get(Calendar.DAY_OF_MONTH)
@@ -170,19 +159,32 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
         cleanDate = Calculations.cleanDate(dayX, monthX, yearX)
         tv_dateSelected_update.text = "Date: $cleanDate"
     }
+    //------------------------------------------
 
+
+    //Create options menu
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.nav_menu, menu)
+        inflater.inflate(R.menu.single_item_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_delete -> {
-                habitViewModel.deleteHabit(args.selectedHabit)
-                Toast.makeText(context, "Habit successfully deleted!", Toast.LENGTH_SHORT).show()
+                deleteHabit(args.selectedHabit)
             }
         }
-        return true
+        return super.onOptionsItemSelected(item)
     }
+    //------------------------------------------
+
+    //Delete a single Habit
+    private fun deleteHabit(habit: Habit) {
+        habitViewModel.deleteHabit(habit)
+        Toast.makeText(context, "Habit successfully deleted!", Toast.LENGTH_SHORT).show()
+
+        findNavController().navigate(R.id.action_updateHabitItem_to_habitList)
+
+    }
+    //------------------------------------------
 
 }

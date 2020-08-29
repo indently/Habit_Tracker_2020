@@ -1,4 +1,4 @@
-package com.federicocotogno.habittracker2020.ui.fragments.habitlist
+package com.federicocotogno.habittracker2020.ui.fragments.habitlist.adapters
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.federicocotogno.habittracker2020.R
 import com.federicocotogno.habittracker2020.data.models.Habit
 import com.federicocotogno.habittracker2020.logic.utils.Calculations
+import com.federicocotogno.habittracker2020.ui.fragments.habitlist.HabitListDirections
 import kotlinx.android.synthetic.main.recycler_habit_item.view.*
 
 class HabitListAdapter : RecyclerView.Adapter<HabitListAdapter.MyViewHolder>() {
@@ -22,18 +23,19 @@ class HabitListAdapter : RecyclerView.Adapter<HabitListAdapter.MyViewHolder>() {
                 val position = adapterPosition
                 Log.d("HabitsListAdapter", "Item clicked at: $position")
 
-                val action = HabitListDirections.actionHabitListToUpdateHabitItem(habitsList[position])
+                val action =
+                    HabitListDirections.actionHabitListToUpdateHabitItem(habitsList[position])
                 itemView.findNavController().navigate(action)
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitListAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         return MyViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.recycler_habit_item, parent,false))
     }
 
     //todo: initialise the recycler view and set it up to show data (part2)
-    override fun onBindViewHolder(holder: HabitListAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentHabit = habitsList[position]
         holder.itemView.iv_habit_icon.setImageResource(currentHabit.imageId)
         holder.itemView.tv_item_description.text = currentHabit.habit_description
