@@ -7,9 +7,11 @@ import java.text.SimpleDateFormat
 object Calculations {
 
     //todo: Change it so it returns a string to display to the textView of the habit item
-    fun calculateTimeBetweenDates(startDate: String, endDate: String) {
+    fun calculateTimeBetweenDates(startDate: String): String {
 
-        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
+        val endDate = timeStampToString(System.currentTimeMillis())
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
         val date1 = sdf.parse(startDate)
         val date2 = sdf.parse(endDate)
 
@@ -21,34 +23,50 @@ object Calculations {
         val months = (difference / 60 / 1000 / 60) / 24 / (365 / 12)
         val years = difference / 60 / 1000 / 60 / 24 / 365
 
-        println(
-            """
-        Minutes: $minutes
-        Hours: $hours
-        Days: $days
-        Months: $months
-        Years: $years
-    """.trimIndent()
-        )
+
+        return when {
+            minutes < 240 -> "$minutes minutes ago"
+            hours < 48 -> "$hours hours ago"
+            days < 61 -> "$days days ago"
+            months < 24 -> "$months months ago"
+            else -> "$years years ago"
+        }
     }
 
-    fun timeStampToDateString(timeStamp: Long): String {
+    private fun timeStampToString(timeStamp: Long): String {
 
         val stamp = Timestamp(timeStamp)
-        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
         val date = sdf.format(Date(stamp.time))
 
         return date.toString()
 
     }
 
-    fun timeStampToTimeString(timestamp: Long): String {
+    fun cleanDate(_day: Int, _month: Int, _year: Int): String {
+        var day = _day.toString()
+        var month = _month.toString()
 
-        val stamp = Timestamp(timestamp)
-        val sdf = SimpleDateFormat("HH:mm:ss")
-        val time = sdf.format(Date(stamp.time))
+        if (_day < 10) {
+            day = "0$_day"
+        }
+        if (_month < 10) {
+            month = "0$_month"
+        }
 
-        return time.toString()
+        return "$day/$month/$_year"
+    }
 
+    fun cleanTime(_hour: Int, _minute: Int): String {
+        var hour = _hour.toString()
+        var minute = _minute.toString()
+
+        if (_hour < 10) {
+            hour = "0$_hour"
+        }
+        if (_minute < 10) {
+            minute = "0$_minute"
+        }
+        return "$hour:$minute"
     }
 }
