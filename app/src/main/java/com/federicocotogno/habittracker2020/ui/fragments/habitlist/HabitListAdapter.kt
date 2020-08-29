@@ -1,5 +1,6 @@
 package com.federicocotogno.habittracker2020.ui.fragments.habitlist
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +18,9 @@ class HabitListAdapter : RecyclerView.Adapter<HabitListAdapter.MyViewHolder>() {
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener {
+            itemView.cv_cardView.setOnClickListener {
                 val position = adapterPosition
+                Log.d("HabitsListAdapter", "Item clicked at: $position")
 
                 val action = HabitListDirections.actionHabitListToUpdateHabitItem(habitsList[position])
                 itemView.findNavController().navigate(action)

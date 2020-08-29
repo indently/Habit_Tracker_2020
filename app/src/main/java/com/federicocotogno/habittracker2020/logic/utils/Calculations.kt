@@ -15,7 +15,14 @@ object Calculations {
         val date1 = sdf.parse(startDate)
         val date2 = sdf.parse(endDate)
 
-        val difference = date2.time - date1.time
+        var isNegative = false
+
+        var difference = date2.time - date1.time
+        if (difference < 0) {
+            difference = -(difference)
+            isNegative = true
+
+        }
 
         val minutes = difference / 60 / 1000
         val hours = difference / 60 / 1000 / 60
@@ -23,6 +30,16 @@ object Calculations {
         val months = (difference / 60 / 1000 / 60) / 24 / (365 / 12)
         val years = difference / 60 / 1000 / 60 / 24 / 365
 
+        if (isNegative) {
+
+            return when {
+                minutes < 240 -> "Starts in $minutes minutes"
+                hours < 48 -> "Starts in $hours hours"
+                days < 61 -> "Starts in $days days"
+                months < 24 -> "Starts in $months months"
+                else -> "Starts in $years years"
+            }
+        }
 
         return when {
             minutes < 240 -> "$minutes minutes ago"

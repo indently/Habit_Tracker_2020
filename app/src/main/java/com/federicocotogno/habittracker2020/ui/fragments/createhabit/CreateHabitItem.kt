@@ -80,8 +80,6 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
         title = et_habitTitle.text.toString()
         description = et_habitDescription.text.toString()
 
-        //todo: create a utility function that checks whether the value of a month or day drops below 10,
-        // and if it does, add a 0 to the end
         //Create a timestamp string for our recyclerview
         timeStamp = "$cleanDate $cleanTime"
 

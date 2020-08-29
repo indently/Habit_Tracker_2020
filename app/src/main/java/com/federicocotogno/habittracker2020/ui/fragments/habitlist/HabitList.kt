@@ -23,8 +23,6 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
         adapter = HabitListAdapter()
         rv_habits.adapter = adapter
         rv_habits.layoutManager = LinearLayoutManager(context)
@@ -34,11 +32,14 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
 
         fab_add.setOnClickListener {
             findNavController().navigate(R.id.action_habitList_to_createHabitItem)
-
         }
 
         //Show the options menu in this fragment
         setHasOptionsMenu(true)
+
+        swipeToRefresh.setOnRefreshListener {
+            swipeToRefresh.isRefreshing = false
+        }
     }
 
     private fun viewModels() {

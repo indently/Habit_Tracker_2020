@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.habitlist.HabitList">
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/swipeToRefresh" >
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_habits"
         android:layout_width="match_parent"
@@ -14,6 +19,8 @@
         android:layout_alignParentTop="true"
         tools:itemCount="20"
         tools:listitem="@layout/recycler_habit_item" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"
