@@ -7,7 +7,7 @@ import com.federicocotogno.habittracker2020.data.models.Habit
 @Dao
 interface HabitDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun addHabit(habit: Habit)
 
     @Update
