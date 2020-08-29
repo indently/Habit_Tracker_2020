@@ -7,18 +7,18 @@
     tools:context=".ui.fragments.habitlist.HabitList">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeToRefresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/swipeToRefresh" >
+        android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_habits"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        tools:itemCount="20"
-        tools:listitem="@layout/recycler_habit_item" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_habits"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            tools:itemCount="20"
+            tools:listitem="@layout/recycler_habit_item" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -32,6 +32,17 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_add" />
+
+    <TextView
+        android:id="@+id/tv_emptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Add a habit!"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        android:visibility="gone" />
 
 
 </RelativeLayout>

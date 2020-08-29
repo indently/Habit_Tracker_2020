@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_habitList_to_createHabitItem"
             app:destination="@id/createHabitItem" />
+        <action
+            android:id="@+id/action_habitList_to_createHabitItem2"
+            app:destination="@id/createHabitItem" />
     </fragment>
     <fragment
         android:id="@+id/updateHabitItem"
@@ -39,9 +42,4 @@
             android:id="@+id/action_createHabitItem_to_habitList"
             app:destination="@id/habitList" />
     </fragment>
-    <fragment
-        android:id="@+id/introFragment"
-        android:name="com.federicocotogno.habittracker2020.ui.introscreen.IntroFragment"
-        android:label="Getting started"
-        tools:layout="@layout/fragment_intro" />
 </navigation>

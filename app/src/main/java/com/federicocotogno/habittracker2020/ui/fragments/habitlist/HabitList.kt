@@ -55,10 +55,15 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
         habitViewModel.getAllHabits.observe(viewLifecycleOwner, Observer {
             habitList = it
             adapter.setData(it)
+
+            if (it.isEmpty()) {
+                rv_habits.visibility = View.GONE
+                tv_emptyView.visibility = View.VISIBLE
+            } else {
+                rv_habits.visibility = View.VISIBLE
+                tv_emptyView.visibility = View.GONE
+            }
         })
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
