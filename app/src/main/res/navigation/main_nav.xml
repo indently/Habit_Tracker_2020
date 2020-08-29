@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/introFragment"
-        android:name="com.federicocotogno.habittracker2020.ui.fragments.introscreen.IntroFragment"
+        android:name="com.federicocotogno.habittracker2020.ui.introscreen.IntroFragment"
         android:label="Getting started"
         tools:layout="@layout/fragment_intro" />
 </navigation>

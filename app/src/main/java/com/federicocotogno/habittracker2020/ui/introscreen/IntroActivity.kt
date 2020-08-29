@@ -1,14 +1,14 @@
-package com.federicocotogno.habittracker2020.ui
+package com.federicocotogno.habittracker2020.ui.introscreen
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.federicocotogno.habittracker2020.R
 import com.federicocotogno.habittracker2020.data.models.IntroView
-import com.federicocotogno.habittracker2020.ui.fragments.introscreen.adapters.ViewPagerIntroAdapter
+import com.federicocotogno.habittracker2020.ui.MainActivity
+import com.federicocotogno.habittracker2020.ui.introscreen.adapters.ViewPagerIntroAdapter
 import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity() {
@@ -56,6 +56,8 @@ class IntroActivity : AppCompatActivity() {
     }
 
     private fun addToIntroView() {
+        //Create some items that you want to add to your viewpager
+
         introView = listOf(
             IntroView("This will be the explanation first screen", R.drawable.ic_tea),
             IntroView("This is a second explanation screen", R.drawable.ic_fastfood),

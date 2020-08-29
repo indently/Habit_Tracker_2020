@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.federicocotogno.habittracker2020.R
+import com.federicocotogno.habittracker2020.ui.introscreen.IntroActivity
 
 class MainActivity : AppCompatActivity() {
 

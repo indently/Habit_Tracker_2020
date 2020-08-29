@@ -1,4 +1,4 @@
-package com.federicocotogno.habittracker2020.ui.fragments.introscreen.adapters
+package com.federicocotogno.habittracker2020.ui.introscreen.adapters
 
 import android.view.LayoutInflater
 import android.view.View
