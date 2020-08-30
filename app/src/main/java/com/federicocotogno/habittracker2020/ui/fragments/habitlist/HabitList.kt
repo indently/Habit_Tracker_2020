@@ -23,8 +23,6 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
     private lateinit var habitViewModel: HabitViewModel
     private lateinit var adapter: HabitListAdapter
 
-    private var userFirstTime = true
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -73,7 +71,6 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.nav_delete -> habitViewModel.deleteAllHabits()
-
         }
         return super.onOptionsItemSelected(item)
     }

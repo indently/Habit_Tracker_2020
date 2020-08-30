@@ -48,7 +48,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
         et_habitTitle_update.setText(args.selectedHabit.habit_title)
         et_habitDescription_update.setText(args.selectedHabit.habit_description)
 
-
         //Pick a drawable
         drawableSelected()
 
@@ -70,7 +69,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
         description = et_habitDescription_update.text.toString()
 
         //Create a timestamp string for our recyclerview
-
         timeStamp = "$cleanDate $cleanTime"
 
         //Check that the form is complete before submitting data to the database
@@ -88,7 +86,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
             Toast.makeText(context, "Please fill all the fields", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     // Create a selector for our icons which will appear in the recycler view
     private fun drawableSelected() {
@@ -161,7 +158,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
     }
     //------------------------------------------
 
-
     //Create options menu
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.single_item_menu, menu)
@@ -183,7 +179,6 @@ class UpdateHabitItem : Fragment(R.layout.fragment_update_habit_item),
         Toast.makeText(context, "Habit successfully deleted!", Toast.LENGTH_SHORT).show()
 
         findNavController().navigate(R.id.action_updateHabitItem_to_habitList)
-
     }
     //------------------------------------------
 
