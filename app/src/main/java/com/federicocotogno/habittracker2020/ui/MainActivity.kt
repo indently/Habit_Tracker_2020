@@ -50,7 +50,6 @@ class MainActivity : AppCompatActivity() {
         val sp = getSharedPreferences("SHARED_PREFS", MODE_PRIVATE)
         userFirstTime = sp.getBoolean("BOOLEAN_FIRST_TIME", true)
 
-
     }
 
 }
