@@ -59,9 +59,10 @@ class IntroActivity : AppCompatActivity() {
         //Create some items that you want to add to your viewpager
 
         introView = listOf(
-            IntroView("This will be the explanation first screen", R.drawable.ic_tea),
-            IntroView("This is a second explanation screen", R.drawable.ic_fastfood),
-            IntroView("This is a third explanation screen", R.drawable.ic_smoking2),
+            IntroView("Welcome to Habit Tracker!", R.drawable.ic_tea),
+            IntroView("This app is designed to keep track of your habits, " +
+                    "whether it's a good one, or a bad one.", R.drawable.ic_fastfood),
+            IntroView("Good luck! Tap on the button below to get started with using the app!", R.drawable.ic_smoking2),
         )
     }
 }
