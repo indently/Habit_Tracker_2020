@@ -153,7 +153,7 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
     private fun getDateCalendar() {
         val cal = Calendar.getInstance()
         day = cal.get(Calendar.DAY_OF_MONTH)
-        month = cal.get(Calendar.MONTH) + 1 //Month requires +1
+        month = cal.get(Calendar.MONTH)
         year = cal.get(Calendar.YEAR)
     }
 

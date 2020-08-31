@@ -67,8 +67,8 @@ object Calculations {
         if (_day < 10) {
             day = "0$_day"
         }
-        if (_month < 10) {
-            month = "0$_month"
+        if (_month < 9) { //Because the month instance we retrieve starts at 0 and it's stupid!
+            month = "0${_month+1}"
         }
 
         return "$day/$month/$_year"
