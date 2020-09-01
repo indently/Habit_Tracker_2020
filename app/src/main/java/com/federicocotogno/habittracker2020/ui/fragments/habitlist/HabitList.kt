@@ -30,7 +30,6 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
         rv_habits.adapter = adapter
         rv_habits.layoutManager = LinearLayoutManager(context)
 
-
         //Instantiate and create viewmodel observers
         viewModels()
 
@@ -51,8 +50,8 @@ class HabitList : Fragment(R.layout.fragment_habit_list) {
         habitViewModel = ViewModelProvider(this).get(HabitViewModel::class.java)
 
         habitViewModel.getAllHabits.observe(viewLifecycleOwner, Observer {
-            habitList = it
             adapter.setData(it)
+            habitList = it
 
             if (it.isEmpty()) {
                 rv_habits.visibility = View.GONE
