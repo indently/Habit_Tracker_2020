@@ -1,4 +1,4 @@
-package com.federicocotogno.habittracker2020.data.database
+package com.federicocotogno.habittracker2020.logic.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

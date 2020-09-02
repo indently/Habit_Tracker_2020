@@ -2,7 +2,7 @@ package com.federicocotogno.habittracker2020.logic.repository
 
 import androidx.lifecycle.LiveData
 import com.federicocotogno.habittracker2020.data.models.Habit
-import com.federicocotogno.habittracker2020.data.database.HabitDao
+import com.federicocotogno.habittracker2020.logic.dao.HabitDao
 
 class HabitRepository (private val habitDao: HabitDao) {
     val getAllHabits: LiveData<List<Habit>> = habitDao.getAllHabits()
