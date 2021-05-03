@@ -68,7 +68,6 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
             getTimeCalendar()
             TimePickerDialog(context, this, hour, minute, true).show()
         }
-
     }
 
     private fun addHabitToDB() {
@@ -104,7 +103,6 @@ class CreateHabitItem : Fragment(R.layout.fragment_create_habit_item),
             //de-select the other options when we pick an image
             iv_smokingSelected.isSelected = false
             iv_teaSelected.isSelected = false
-
         }
 
         iv_smokingSelected.setOnClickListener {

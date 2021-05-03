@@ -21,7 +21,6 @@ object Calculations {
         if (difference < 0) {
             difference = -(difference)
             isNegative = true
-
         }
 
         val minutes = difference / 60 / 1000
@@ -57,7 +56,6 @@ object Calculations {
         val date = sdf.format(Date(stamp.time))
 
         return date.toString()
-
     }
 
     fun cleanDate(_day: Int, _month: Int, _year: Int): String {
@@ -67,8 +65,11 @@ object Calculations {
         if (_day < 10) {
             day = "0$_day"
         }
+
         if (_month < 9) { //Because the month instance we retrieve starts at 0 and it's stupid!
-            month = "0${_month+1}"
+            month = "0${_month + 1}"
+        } else if (_month >= 9 && _month <= 11) {
+            month = (_month + 1).toString()
         }
 
         return "$day/$month/$_year"
